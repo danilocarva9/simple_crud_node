@@ -13,6 +13,10 @@ npm install mongoose "mongo ORM for database"
 
 npm install require-dir "ajuda path de diretorios"
 
+npm install mongoose-paginate "mongoose pagination"
+
+npm install cors "cross-domina access"
+
 touch .gitignore "create new .gitignore file, add node_modules folder inside of it"
 ```
 
