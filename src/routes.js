@@ -1,11 +1,18 @@
 const express = require('express');
 const routes = express.Router();
-const ProductController = require("./controllers/ProductController");
+const JobController = require("./controllers/JobController");
+const UserController = require("./controllers/UserController");
+const LoginController = require("./controllers/LoginController");
+const authMiddleware = require("./middlewares/auth");
 
-routes.get("/products", ProductController.index);
-routes.get("/products/:id", ProductController.show);
-routes.post("/products", ProductController.store);
-routes.put("/products/:id", ProductController.update);
-routes.delete("/products/:id", ProductController.destroy);
+routes.post("/login", LoginController.login);
+
+routes.get("/jobs", authMiddleware, JobController.index);
+routes.get("/jobs/:id", JobController.show);
+routes.post("/jobs", JobController.store);
+routes.put("/jobs/:id", JobController.update);
+routes.delete("/jobs/:id", JobController.destroy);
+
+routes.post("users", UserController.index);
 
 module.exports = routes;

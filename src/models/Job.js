@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const mongoosePaginate = require('mongooose-paginate');
+const mongoosePaginate = require('mongoose-paginate');
 
-const ProductSchema = new mongoose.Schema({
+const JobSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -18,7 +18,10 @@ const ProductSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+},{
+    collection: 'jobs',
+    timestamps: true  
 });
 
-ProductSchema.plugin(mongoosePaginate);
-mongoose.model('Product', ProductSchema);
+JobSchema.plugin(mongoosePaginate);
+mongoose.model('Job', JobSchema);
