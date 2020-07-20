@@ -30,9 +30,6 @@ module.exports = {
             return res.status(400).send(error);
         }
     },
-    
-
-
     async login(req, res){
         
         //Check if email exists
@@ -49,6 +46,7 @@ module.exports = {
 
     },
     async logoff(req, res){
-
+        //Simple clear storage with token
+        res.json({ auth: false, token: null });
     }
 };

@@ -7,6 +7,8 @@ const authMiddleware = require("./middlewares/auth");
 
 routes.post("/register", AuthController.register);
 routes.post("/login", AuthController.login);
+routes.post("/logoff", AuthController.logoff);
+
 
 routes.get("/jobs", authMiddleware, JobController.index);
 routes.get("/jobs/:id", authMiddleware, JobController.show);
