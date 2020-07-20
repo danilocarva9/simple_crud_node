@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("Job");
 const jwt = require("jsonwebtoken");
-const authConfig = require("../config/auth");
-
 
 module.exports = {
 

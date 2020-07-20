@@ -1,11 +1,9 @@
 const mongoose = require("mongoose");
 const Job = mongoose.model("Job");
 const jwt = require("jsonwebtoken");
-const authConfig = require("../config/auth");
-
 
 function generateToken(params = []){
-    return jwt.sign(params, authConfig.secret, {
+    return jwt.sign(params, process.env.JWT_SECRET, {
         expiresIn: 60
     });
 }

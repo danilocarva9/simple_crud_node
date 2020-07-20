@@ -2,17 +2,18 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const requireDir = require('require-dir');
-
-
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb://206.189.179.30:27017/timtjobs',{ useNewUrlParser: true, useUnifiedTopology: true });
+//Require DB
+require('./src/config/database');
+//Require models
 requireDir('./src/models');
 
-const Job = mongoose.model('Job');
+//Define routes
 app.use('/api', require("./src/routes"));
-
-app.listen(3000);
+//App listen to port
+app.listen(process.env.PORT);

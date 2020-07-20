@@ -2,17 +2,18 @@ const express = require('express');
 const routes = express.Router();
 const JobController = require("./controllers/JobController");
 const UserController = require("./controllers/UserController");
-const LoginController = require("./controllers/LoginController");
+const AuthController = require("./controllers/AuthController");
 const authMiddleware = require("./middlewares/auth");
 
-routes.post("/login", LoginController.login);
+routes.post("/register", AuthController.register);
+routes.post("/login", AuthController.login);
 
 routes.get("/jobs", authMiddleware, JobController.index);
-routes.get("/jobs/:id", JobController.show);
-routes.post("/jobs", JobController.store);
-routes.put("/jobs/:id", JobController.update);
-routes.delete("/jobs/:id", JobController.destroy);
+routes.get("/jobs/:id", authMiddleware, JobController.show);
+routes.post("/jobs", authMiddleware, JobController.store);
+routes.put("/jobs/:id", authMiddleware, JobController.update);
+routes.delete("/jobs/:id", authMiddleware, JobController.destroy);
 
-routes.post("users", UserController.index);
+routes.post("users", authMiddleware, UserController.index);
 
 module.exports = routes;
